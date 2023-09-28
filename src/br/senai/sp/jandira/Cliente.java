@@ -3,10 +3,29 @@ package br.senai.sp.jandira;
 import com.sun.source.tree.UsesTree;
 
 import javax.sound.midi.Soundbank;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Cliente {
     Scanner scanner = new Scanner(System.in);
+    List<Cliente> listcliente = new ArrayList();
+
+    public Cliente pesquisarCliente(long cpf){
+        for (Cliente cliente: listcliente) {
+            long cpfCliente = cliente.getCpf();
+
+            if (cpfCliente == cpf) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+
+    public void adicionarCliente(Cliente cliente){
+        listcliente.add(cliente);
+    }
+
     private String nome;
 
     private long cpf, rg, telefone;
